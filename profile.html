@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/profile.css">
+  <style>
+    .settings-content {
+      display: none;
+    }
+    .settings-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-container">
+    <h2>Settings</h2>
+    <nav>
+      <ul class="w3-container">
+        <li><a href="#" id="general-link">General</a></li>
+        <li><a href="#" id="profile-link">Profile</a></li>
+      </ul>
+    </nav>
+
+    <div id="general-content" class="settings-content active">
+      <h3>General Information</h3>
+      <ul class="info-list">
+        <li><label for="username">Username:</label>
+          <input type="text" id="username" placeholder="Your Username">
+        </li>
+        <li><label for="email">Email address:</label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </li>
+        <li><label for="password">Password:</label>
+          <input type="password" id="password" placeholder="Enter your password">
+        </li>
+        <li><label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" placeholder="+91 12345 67890">
+        </li>
+      </ul>
+      <button class="update-button">Update</button>
+    </div>
+
+    <div id="profile-content" class="settings-content">
+      <h3>Profile Information</h3>
+      <ul class="info-list">
+        <li><label for="skills">Skills:</label>
+          <input type="text" id="skills" placeholder="Your Skills">
+        </li>
+        <li><label for="description">Description:</label>
+          <input type="text" id="description" placeholder="Short Description">
+        </li>
+        <li><label for="projects">Projects:</label>
+          <textarea id="projects" placeholder="Describe your projects..."></textarea>
+        </li>
+        <li><label for="social-links">Social Links:</label>
+          <input type="text" id="social-links" placeholder="Your Social Links">
+        </li>
+      </ul>
+      <button class="update-button">Update</button>
+    </div>
+  </div>
+
+  <script>
+    const generalLink = document.getElementById('general-link');
+    const profileLink = document.getElementById('profile-link');
+    const generalContent = document.getElementById('general-content');
+    const profileContent = document.getElementById('profile-content');
+
+    generalLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      generalContent.classList.add('active');
+      profileContent.classList.remove('active');
+    });
+
+    profileLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      profileContent.classList.add('active');
+      generalContent.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
