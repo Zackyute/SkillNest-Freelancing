@@ -1,31 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/signup.css">
+  <script>
+    function validateForm(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+
+      // Get form values
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+      // Check if required fields (*) are filled
+      if (username === "" || email === "" || password === "" || confirmPassword === "") {
+        alert("All fields marked with * must be filled.");
+        return;
+      }
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+        return;
+      }
+
+      // If validation passes, redirect to login page
+      alert("Sign up successful!");
+      window.location.href = 'login.html';
+    }
+    
+    window.onload = function() {
+      // Attach event listener to the form
+      document.getElementById('signupForm').addEventListener('submit', validateForm);
+    };
+  </script>
 </head>
 <body>
   <div class="background">
-      <div class="shape"></div>
-      <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
   </div>
-  <form>
-      <h3>Sign up</h3>
 
-      <label for="username">Username</label>
-      <input type="text" placeholder="Email or Phone" id="username">
+  <form id="signupForm">
+    <h3>Sign up</h3>
 
-      <label for="password">Password</label>
-      <input type="password" placeholder="Password" id="password">
-      
-      <label for="password">Confirm Password</label>
-      <input type="password" placeholder="Password" id="password">
+    <label for="username">Username *</label>
+    <input type="text" placeholder="Username" id="username" required>
 
-      <button>Log In</button><br><br><br>
-      <div class="sign up">
-        <p>Already Registered? <a href="/login.html">login</a></p>
-      </div>
+    <label for="email">Email *</label>
+    <input type="email" placeholder="Email" id="email" required>
+
+    <label for="phone">Phone</label>
+    <input type="text" placeholder="Phone" id="phone">
+
+    <label for="password">Password *</label>
+    <input type="password" placeholder="Password" id="password" required>
+
+    <label for="confirm-password">Confirm Password *</label>
+    <input type="password" placeholder="Confirm Password" id="confirm-password" required>
+
+    <button type="submit">Sign Up</button>
+    
+    <div class="sign-up">
+      <p>Already Registered? <a href="login.html">Login</a></p>
+    </div>
   </form>
 </body>
 </html>

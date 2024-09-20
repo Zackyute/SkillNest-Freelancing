@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/profile.css">
-  <style>
-    .settings-content {
-      display: none;
-    }
-    .settings-content.active {
-      display: block;
-    }
-  </style>
 </head>
 <body>
+  <div class="profile-card">
+    <h3>Profile Preview</h3>
+    <img id="card-image" src="default-profile.png" alt="Profile Image" style="width: 100px; height: 100px; border-radius: 50%;">
+    <p><strong>Username:</strong> <span id="card-username">Your Username</span></p>
+    <p><strong>Email:</strong> <span id="card-email">your@email.com</span></p>
+    <p><strong>Phone:</strong> <span id="card-phone">+91 12345 67890</span></p>
+    <p><strong>Skills:</strong> <span id="card-skills">Your Skills</span></p>
+    <p><strong>Description:</strong> <span id="card-description">Short Description</span></p>
+  </div>
+
   <div class="settings-container">
     <h2>Settings</h2>
     <nav>
@@ -45,6 +47,12 @@
     <div id="profile-content" class="settings-content">
       <h3>Profile Information</h3>
       <ul class="info-list">
+        <li><label for="image">Profile Image:</label>
+          <input type="file" id="image" accept="image/*">
+        </li>
+        <li>
+          <img id="image-preview" src="default-profile.png" alt="Image Preview" style="width: 100px; height: 100px; border-radius: 50%;">
+        </li>
         <li><label for="skills">Skills:</label>
           <input type="text" id="skills" placeholder="Your Skills">
         </li>
@@ -61,24 +69,82 @@
       <button class="update-button">Update</button>
     </div>
   </div>
-
+  
   <script>
+  // Wait for the DOM to fully load before executing the script
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Get elements for toggling between general and profile settings
     const generalLink = document.getElementById('general-link');
     const profileLink = document.getElementById('profile-link');
     const generalContent = document.getElementById('general-content');
     const profileContent = document.getElementById('profile-content');
-
+  
+    // Event listener for the General link
     generalLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      generalContent.classList.add('active');
-      profileContent.classList.remove('active');
+      event.preventDefault(); // Prevent default anchor behavior
+      generalContent.classList.add('active'); // Show General settings
+      profileContent.classList.remove('active'); // Hide Profile settings
+    });
+  
+    // Event listener for the Profile link
+    profileLink.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default anchor behavior
+      profileContent.classList.add('active'); // Show Profile settings
+      generalContent.classList.remove('active'); // Hide General settings
+    });
+  
+    // Get elements for the profile card display
+    const cardUsername = document.getElementById('card-username');
+    const cardEmail = document.getElementById('card-email');
+    const cardPhone = document.getElementById('card-phone');
+    const cardSkills = document.getElementById('card-skills');
+    const cardDescription = document.getElementById('card-description');
+    const cardImage = document.getElementById('card-image');
+    const imagePreview = document.getElementById('image-preview');
+  
+    // Get input fields for user information
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const skillsInput = document.getElementById('skills');
+    const descriptionInput = document.getElementById('description');
+    const imageInput = document.getElementById('image');
+
+    // Update the profile card in real-time as the user types
+    usernameInput.addEventListener('input', function() {
+      cardUsername.textContent = usernameInput.value || 'Your Username';
+    });
+  
+    emailInput.addEventListener('input', function() {
+      cardEmail.textContent = emailInput.value || 'your@email.com';
+    });
+  
+    phoneInput.addEventListener('input', function() {
+      cardPhone.textContent = phoneInput.value || '+91 12345 67890';
+    });
+  
+    skillsInput.addEventListener('input', function() {
+      cardSkills.textContent = skillsInput.value || 'Your Skills';
+    });
+  
+    descriptionInput.addEventListener('input', function() {
+      cardDescription.textContent = descriptionInput.value || 'Short Description';
     });
 
-    profileLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      profileContent.classList.add('active');
-      generalContent.classList.remove('active');
+    // Update profile image display
+    imageInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          cardImage.src = e.target.result; // Update profile card image
+          imagePreview.src = e.target.result; // Update image preview
+        };
+        reader.readAsDataURL(file);
+      }
     });
-  </script>
+  });
+  </script>  
 </body>
 </html>
