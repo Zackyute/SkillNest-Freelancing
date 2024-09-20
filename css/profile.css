@@ -8,7 +8,6 @@ html, body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #050315;
-  overflow: hidden;
 }
 
 body {
@@ -19,9 +18,33 @@ body {
   overflow-y: auto;
 }
 
+.profile-card {
+  position: fixed;
+  left: 20px;
+  top: 50px;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  color: #050315;
+}
+
+.profile-card h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.profile-card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.profile-card span {
+  font-weight: bold;
+}
+
 .settings-container {
-  display: flex;
-  justify-items: auto;
   max-width: 850px;
   width: 100%;
   height: 100vh;
@@ -29,11 +52,10 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px 0 0 10px;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   box-shadow: -10px 0px 5px rgb(174, 214, 228);
   display: flex;
   flex-direction: column;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 h2 {
@@ -71,6 +93,11 @@ nav ul li a:hover {
 
 .settings-content {
   margin-top: 20px;
+  display: none; /* Hide all settings content by default */
+}
+
+.settings-content.active {
+  display: block; /* Show the active content */
 }
 
 .settings-content h3 {
@@ -109,7 +136,7 @@ nav ul li a:hover {
   padding: 10px;
   margin-top: 20px;
   background-color: #776cdf;
-  color: #050315;
+  color: #fff;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -120,6 +147,16 @@ nav ul li a:hover {
 .update-button:hover {
   background-color: #433bff;
 }
-.w3-container{
-background-color: rgba(255, 255, 255, 0.8);
+
+.w3-container {
+  background-color: rgba(255, 255, 255, 0.8);
 }
+
+.settings-content {
+  display: none;
+}
+
+.settings-content.active {
+  display: block;
+}
+

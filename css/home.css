@@ -1,84 +1,90 @@
-body{
-    background: scroll;
-    background-image: url(/images/background.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #050315;
-    overflow: hidden;
-    justify-content: flex-end;
-    overflow-y: auto;
+body {
+  background: scroll;
+  background-image: url(/images/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #050315;
+  overflow: hidden;
+  justify-content: flex-end;
+  overflow-y: auto;
 }
+
 .navbar {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    position: fixed;
-    top: 0; 
-    width: 100%;
-    z-index: 1000;  
-    height: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 40px;
 }
-  
-  .navbar ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  .navbar li {
-    margin: 0 10px;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    padding: 10px;
-  }
-  
-  .navbar a:hover {
-    color:blue;
-  }
+
+.navbar ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.navbar li {
+  margin: 0 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.navbar a:hover {
+  color: blue;
+}
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
 }
 
 .serv {
-    background-color: #282828;
-    border-radius: 8px;
-    padding: 15px;
-    width: 150px;
-    text-align: center;
-    margin: 10px;
+  background-color: #282828;
+  border-radius: 8px;
+  padding: 15px;
+  width: 150px;
+  text-align: center;
+  margin: 10px;
+  overflow: hidden; 
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.serv:hover {
+  transform: scale(1.1);
 }
 
 .serv img {
-    border-radius: 8px;
-    width: 100%;
-    height: auto;
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
 }
 
 .serv h3 {
-    font-size: 1rem;
-    margin: 10px 0 5px 0;
-    color: #fff;
+  font-size: 1rem;
+  margin: 10px 0 5px 0;
+  color: #fff;
 }
 
 .serv p {
-    font-size: 0.85rem;
-    color: #b3b3b3; 
-    margin: 0;
+  font-size: 0.85rem;
+  color: #b3b3b3;
+  margin: 0;
 }
-
-
